@@ -1,0 +1,30 @@
+{
+    "name": "lpsnippets",
+    "displayName": "LpSnippets",
+    "publisher": "joewangl",
+    "description": "Code Snippets for Lp Components: lp.aliyun.test",
+    "author": {
+        "name": "joewangl",
+        "email": "78296761@qq.com"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/joewangl/LpSnippets"
+    },
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.10.x"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/javascript.json"
+            }
+        ]
+    }
+}
