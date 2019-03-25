@@ -23,8 +23,9 @@
         "snippets": [
             {
                 "language": "javascript",
-                "path": "./snippets/javascript.json"
+                "path": "./snippets/snippets.json"
             }
         ]
     }
 }
+
