@@ -1,72 +1,21 @@
 {
   "LPPage list": {
-    "prefix": "list",
+    "prefix": "lppage-list",
     "body": [
       "import React from 'react';",
-      "import { LPPage, LPContainer, LPPanel, LPTable } from '@iotx-biz/components';",
+      "import { LPPage, LPContainer, LPPanel } from '@iotx-biz/components';",
       "import { moment } from '@bone/bone-web-ui';",
-      "\n",
+      "",
       "export default class extends React.Component {",
       "\tconstructor(props) {",
       "\t\tsuper(props)",
       "\t\tthis.state={}",
-      "\t\t$2",
       "\t}",
-      "\n",
-      "\tgetColumns = () => {",
-      "\t\treturn [",
-      "\t\t\t{",
-      "\t\t\t\ttitle: '属性1',",
-      "\t\t\t\tdataIndex: 'property1',",
-      "\t\t\t\trows: 1,",
-      "\t\t\t}, {",
-      "\t\t\t\ttitle: '属性2',",
-      "\t\t\t\tdataIndex: 'property2',",
-      "\t\t\t\trows: 1,",
-      "\t\t\t\ttip:'属性2描述'",
-      "\t\t\t}, {",
-      "\t\t\t\ttitle: '属性2',",
-      "\t\t\t\tdataIndex: 'property2',",
-      "\t\t\t\trows: 1,",
-      "\t\t\t\ttip:'属性2描述'",
-      "\t\t\t}",
-      "\t\t];",
-      "\t}",
-      "\tgetData = () => {",
-      "\t\treturn new Promise((resolve) => {",
-      "\t\t\tsetTimeout(() => {",
-      "\t\t\t\tresolve({dataSource: [],total: 0});",
-      "\t\t\t}, 1000)",
-      "\t\t})",
-      "\t}",
-      "\tgetColumns = () => {",
-      "\t\tconst buttons = [",
-      "\t\t\t{",
-      "\t\t\t\tcontent: data => true ? '查看' : '编辑',",
-      "\t\t\t\tvisible: data => true,",
-      "\t\t\t\tonClick: (e, rowData) => {},",
-      "\t\t\t}, {",
-      "\t\t\t\tcontent: '发布',",
-      "\t\t\t\tvisible: true,",
-      "\t\t\t\tonClick: (e, data) => {},",
-      "\t\t\t}, {",
-      "\t\t\t\ttitle: '属性2',",
-      "\t\t\t\tdataIndex: 'property2',",
-      "\t\t\t\trows: 1,",
-      "\t\t\t\ttip:'属性2描述'",
-      "\t\t\t}",
-      "\t\t];",
-      "\t\treturn {",
-      "\t\t\ttitle: '操作',",
-      "\t\t\tstyle: { width: '160px' },",
-      "\t\t\tbuttons,",
-      "\t\t};",
-      "\t}",
+      "",
       "\trender() {",
-      "\t\tconst columns = this.getColumns();",
-      "\t\tconst actions = this.getActions();",
+      "\t\tconst buttons = [{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}];",
       "\t\treturn (",
-      "\t\t\t<LPPage title={'模板页面'} >",
+      "\t\t\t<LPPage title={'模板页面'} subTitle={'产品管理描述'} buttons={buttons}>",
       "\t\t\t\t<LPContainer>",
       "\t\t\t\t\t<LPPanel",
       "\t\t\t\t\t\ttitle={'模板标题'}",
@@ -76,12 +25,6 @@
       "\t\t\t\t\t\t\tonClick:() => {},",
       "\t\t\t\t\t\t\ttype:'primary',",
       "\t\t\t\t\t\t}]}>",
-      "\t\t\t\t\t<LPPanel",
-      "\t\t\t\t\t\tfetchData={this.getData}",
-      "\t\t\t\t\t\tcolumns={columns}",
-      "\t\t\t\t\t\tactions={actions}",
-      "\t\t\t\t\t\tlocale={{ empty: '暂无模板数据' }}",
-      "\t\t\t\t\t\t/>",
       "\t\t\t\t\t</LPPanel>",
       "\t\t\t\t</LPContainer>",
       "\t\t\t</LPPage>",
@@ -89,8 +32,289 @@
       "\t}",
       "}"
     ],
-    "description": "LP布局组件页面1"
+    "description": "LP布局组件列表页面"
+  },
+  "LPPage detail": {
+    "prefix": "lppage-detail",
+    "body": [
+      "import React from 'react';",
+      "import { LPPage, LPContainer, LPPanel, LPTable, LPInfo } from '@iotx-biz/components';",
+      "import { moment } from '@bone/bone-web-ui';",
+      "",
+      "export default class extends React.Component {",
+      "\tconstructor(props) {",
+      "\t\tsuper(props)",
+      "\t\tthis.state={}",
+      "\t}",
+      "",
+      "\trender() {",
+      "\t\tconst buttons = [{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}];",
+      "\t\tconst attributes = [{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}];",
+      "\t\treturn (",
+      "\t\t\t<LPPage breadcrumb={[{ name: '页面1', link: './' },{ name: '页面2', link: './' }]}>",
+      "\t\t\t\t<LPInfo",
+      "\t\t\t\t\ttitle='页面标题'",
+      "\t\t\t\t\tcolsPerRow={3}",
+      "\t\t\t\t\tbuttons={buttons}",
+      "\t\t\t\t\tattributes={[",
+      "\t\t\t\t\t\t{name: 'Email',value: 'ali-IoT@alibaba-inc.',custom: true,buttons: [{ value: '配置', onClick: () => {console.log('配置')}}]},",
+      "\t\t\t\t\t\t{name: '独立域名',copyable: true,value: 'link.alibaba.com'}",
+      "\t\t\t\t\t]}",
+      "\t\t\t\t/>",
+      "\t\t\t\t<LPContainer",
+      "\t\t\t\t\ttype={'tab'}",
+      "\t\t\t\t\tsource={[",
+      "\t\t\t\t\t\t{ title: 'tab1', key: 'home', content: <LPPanel title={'tab1'}>tab1</LPPanel> },",
+      "\t\t\t\t\t\t{ title: 'tab2', key: 'doc', content: <LPPanel title={'tab1'}>tab2</LPPanel> },",
+      "\t\t\t\t\t\t{ title: 'tab3', key: 'api', content: <LPPanel title={'tab1'}>tab3</LPPanel> },",
+      "\t\t\t\t\t]}",
+      "\t\t\t\t/>",
+      "\t\t\t</LPPage>",
+      "\t\t);",
+      "\t}",
+      "}"
+    ],
+    "description": "LP布局组件页面详情页"
+  },
+  "LPTable normal": {
+    "prefix": "lptable-normal",
+    "body": [
+      "<LPTable",
+      "\tdataSource={[",
+      "\t\t{ id: '小明', phone: '123456', email: 'qwe@asd.com' },",
+      "\t\t{ id: '小红', phone: '987654', email: 'zxc@mnb.com' },",     
+      "\t}",
+      "\tcolumns={[",
+      "\t\t{ title: '姓名', dataIndex: 'id', tips: 'haha' },",
+      "\t\t{ title: '手机号', dataIndex: 'phone', rows:1},",
+      "\t\t{ title: 'email', dataIndex: 'email', cell: (value, index, record) => value},",      
+      "\t}",
+      "\tactions={{",
+      "\t\ttitle: '操作',",
+      "\t\tbuttons: [",
+      "\t\t\t{ content: '添加'},",
+      "\t\t\t{ content: () => '删除', onClick: (e, rawData) => {}},",
+      "\t\t]",  
+      "\t}}",
+      "\tpagination={{",
+      "\t\tpageSizeList: [5, 10, 20],",
+      "\t\tpageSize: 10,",
+      "\t\tshowTotal: true,",
+      "\t\ttotal: 40,",
+      "\t\tcurrent: 1,",
+      "\t\tonChange: (pageNo) => {},",
+      "\t\tonPageSizeChange: (pageSize) => {},",
+      "\t}",
+      "/>"
+    ],
+    "description": "LP表格组件常规用法"
+  },
+  "LPTable async": {
+    "prefix": "lptable-async",
+    "body": [
+      "<LPTable",
+      "\tfetchData={param =>",
+      "\t\tnew Promise(resolve => {",
+      "\t\t\tsetTimeout(() => {",
+      "\t\t\t\tconst dataSource =  [{ id: '小明', phone: '123456', email: 'qwe@asd.com'},{ id: '小红', phone: '987654', email: 'zxc@mnb.com'}]",
+      "\t\t\t\tresolve({ dataSource, total: 40})",
+      "\t\t\t}, 1000)",       
+      "\t\t})",    
+      "\t}",
+      "\tcolumns={[",
+      "\t\t{ title: '姓名', dataIndex: 'id', tips: 'haha' },",
+      "\t\t{ title: '手机号', dataIndex: 'phone', rows:1},",
+      "\t\t{ title: 'email', dataIndex: 'email', cell: (value, index, record) => value},",      
+      "\t}",
+      "\tactions={{",
+      "\t\ttitle: '操作',",
+      "\t\tbuttons: [",
+      "\t\t\t{ content: '添加'},",
+      "\t\t\t{ content: () => '删除', onClick: (e, rawData) => {}},",
+      "\t\t]",  
+      "\t}}",
+      "/>"
+    ],
+    "description": "LP表格组件高阶用法"
+  },
+  "LPInfo": {
+    "prefix": "lpinfo",
+    "body": [
+      "<LPInfo",
+      "\ttitle={'模板标题'}",
+      "\tattributes={[",
+      "\t\t{ name: 'Email', value: 'ali-IoT@alibaba-inc.' },",
+      "\t\t{ name: '独立域名', tips: '提示信息', password: true, copyable: true, value: 'link.alibaba.com' },",     
+      "\t]}",
+      "\tbuttons={[{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}]}",
+      "\textra={'左特殊内容'}",
+      "\trightExtra={'右特殊内容'}",
+      "\tstatus={'已上线'}",
+      "/>"
+    ],
+    "description": "LPInfo组件模板"
+  },
+  "LPGrid": {
+    "prefix": "lpgrid",
+    "body": [
+      "<LPGrid",
+      "\tdataSource={[",
+      "\t\t{ name: '标题1', value: 'value1', span: 8 },",
+      "\t\t{ name: '标题2', value: 'value2', span: 8 },",
+      "\t\t{ name: '标题3', value: 'value3', span: 8 },",
+      "\t\t{ name: '标题4', value: 'value4', span: 24 },",  
+      "\t]}",
+      "/>"
+    ],
+    "description": "LPGrid组件模板"
+  },
+  "LPDialog": {
+    "prefix": "lpdialog",
+    "body": [
+      "<LPDialog",
+      "\ttitle={'标题'}",
+      "\tvisible={true}",
+      "\tstyle={{ width: 600 }}",
+      "\tonOk={() => {}}",
+      "\tonCancel={() => {}}",
+      "\tonClose={() => {}}",
+      ">",
+      "\t$2",
+      "</LPDialog>"
+    ],
+    "description": "LPDialog弹窗模板"
+  }, 
+  "LPConfirm": {
+    "prefix": "lpconfirm",
+    "body": [
+      "LPConfirm({",
+      "\ttitle: '删除',",
+      "\tcontent: '确定删除吗? ',",
+      "\tonOk: () => {},",
+      "});"
+    ],
+    "description": "LPConfirm告警弹窗模板"
+  },
+  "LPNotice": {
+    "prefix": "lpnotice",
+    "body": [
+      "<LPNotice",
+      "\ttitle={'title'}",
+      "\ttype={'prompt'}", 
+      "\tanimation={false}",
+      "\tcontent={'Content Content Content Content'}",
+      "/>"
+    ],
+    "description": "LPNotice提示模板"
+  },
+  "LPRangePicker": {
+    "prefix": "lprangepicker",
+    "body": [
+      "<LPRangePicker onChange={(start, end) => console.log(start, end)} />"
+    ],
+    "description": "LPRangePicker时间选择模板"
+  },
+  "LPSwitch text": {
+    "prefix": "lpswitch-text",
+    "body": [
+      "<LPSwitch checkedChildren={'开'} unCheckedChildren={'关'} loading />"
+    ],
+    "description": "LPSwitch带文字"
+  },
+  "LPSwitch": {
+    "prefix": "lpswitch",
+    "body": [
+      "<LPSwitch size={'small'} loading />"
+    ],
+    "description": "LPSwitch不带文字"
+  },
+  "LPToast success": {
+    "prefix": "lptoast-success",
+    "body": [
+      "LPToast.success('请求成功')"
+    ],
+    "description": "LPToast失败"
+  },
+  "LPToast error": {
+    "prefix": "lptoast-error",
+    "body": [
+      "LPToast.error('请求错误')"
+    ],
+    "description": "LPToast成功"
+  },
+  "React componentWillMount": {
+    "prefix": "componentWillMount",
+    "body": [
+      "componentWillMount() {",
+      "\t$1",
+      "}"
+    ],
+    "description": "在第一次绘制render()之前。\n这个函数调用时机是在组件创建，并初始化了状态之后，在第一次绘制 render() 之前。可以在这里做一些业务初始化操作，也可以设置组件状态。这个函数在整个生命周期中只被调用一次。"
+  },
+  "React componentDidMount": {
+    "prefix": "componentDidMount",
+    "body": [
+      "componentDidMount() {",
+      "\t$1",
+      "}"
+    ],
+    "description": "虚拟DOM已经构建完成。\n这个函数调用的时候，其虚拟 DOM 已经构建完成，你可以在这个函数开始获取其中的元素或者子组件了。需要注意的是，RN 框架是先调用子组件的 componentDidMount()，然后调用父组件的函数。从这个函数开始，就可以和 JS 其他框架交互了，例如设置计时 setTimeout 或者 setInterval，或者发起网络请求。这个函数也是只被调用一次。这个函数之后，就进入了稳定运行状态，等待事件触发。"
+  },
+  "React componentWillReceiveProps": {
+    "prefix": "componentWillReceiveProps",
+    "body": [
+      "componentWillReceiveProps(nextProps) {",
+      "\t$1",
+      "}"
+    ],
+    "description": "即将被设置新属性。\n输入参数 nextProps 是即将被设置的属性，旧的属性还是可以通过 this.props 来获取。在这个回调函数里面，你可以根据属性的变化，通过调用 this.setState() 来更新你的组件状态，这里调用更新状态是安全的，并不会触发额外的 render() 调用。"
+  },
+  "React shouldComponentUpdate": {
+    "prefix": "shouldComponentUpdate",
+    "body": [
+      "shouldComponentUpdate(nextProps, nextState) {",
+      "\t$1",
+      "}"
+    ],
+    "description": "即将被设置的属性和更新的状态值，如果true表示需要更新。\n输入参数 nextProps 和上面的 componentWillReceiveProps 函数一样，nextState 表示组件即将更新的状态值。这个函数的返回值决定是否需要更新组件，如果 true 表示需要更新，继续走后面的更新流程。否者，则不更新，直接进入等待状态。\n默认情况下，这个函数永远返回 true 用来保证数据变化的时候 UI 能够同步更新。在大型项目中，你可以自己重载这个函数，通过检查变化前后属性和状态，来决定 UI 是否需要更新，能有效提高应用性能。"
+  },
+  "React componentWillUpdate": {
+    "prefix": "componentWillUpdate",
+    "body": [
+      "componentWillUpdate(nextProps, nextState) {",
+      "\t$1",
+      "}"
+    ],
+    "description": "紧接着这个函数就会调用render()来更新界面。\n输入参数与 shouldComponentUpdate 一样，在这个回调中，可以做一些在更新界面之前要做的事情。需要特别注意的是，在这个函数里面，你就不能使用 this.setState 来修改状态。这个函数调用之后，就会把 nextProps 和 nextState 分别设置到 this.props 和 this.state 中。紧接着这个函数，就会调用 render() 来更新界面了。"
+  },
+  "React componentDidUpdate": {
+    "prefix": "componentDidUpdate",
+    "body": [
+      "componentDidUpdate(prevProps, prevState) {",
+      "\t$1",
+      "}"
+    ],
+    "description": "已完成属性和状态的更新。"
+  },
+  "React componentWillUnmount": {
+    "prefix": "componentWillUnmount",
+    "body": [
+      "componentWillUnmount() {",
+      "\t$1",
+      "}"
+    ],
+    "description": "当组件要被从界面上移除的时候，就会调用 componentWillUnmount()。"
+  },
+  "React componentDidCatch": {
+    "prefix": "componentDidCatch",
+    "body": [
+      "componentDidCatch() {",
+      "\t$1",
+      "}"
+    ],
+    "description": "捕获在子组件树中任何地方的 JavaScript 异常，并打印这些错误和展示备用UI"
   }
+ 
 }
 
 
