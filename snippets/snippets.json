@@ -4,7 +4,6 @@
     "body": [
       "import React from 'react';",
       "import { LPPage, LPContainer, LPPanel } from '@iotx-biz/components';",
-      "import { moment } from '@bone/bone-web-ui';",
       "",
       "export default class extends React.Component {",
       "\tconstructor(props) {",
@@ -39,7 +38,6 @@
     "body": [
       "import React from 'react';",
       "import { LPPage, LPContainer, LPPanel, LPTable, LPInfo } from '@iotx-biz/components';",
-      "import { moment } from '@bone/bone-web-ui';",
       "",
       "export default class extends React.Component {",
       "\tconstructor(props) {",
@@ -49,7 +47,6 @@
       "",
       "\trender() {",
       "\t\tconst buttons = [{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}];",
-      "\t\tconst attributes = [{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}];",
       "\t\treturn (",
       "\t\t\t<LPPage breadcrumb={[{ name: '页面1', link: './' },{ name: '页面2', link: './' }]}>",
       "\t\t\t\t<LPInfo",
@@ -125,7 +122,7 @@
       "\t\t{ title: '姓名', dataIndex: 'id', tips: 'haha' },",
       "\t\t{ title: '手机号', dataIndex: 'phone', rows:1},",
       "\t\t{ title: 'email', dataIndex: 'email', cell: (value, index, record) => value},",      
-      "\t}",
+      "\t]}",
       "\tactions={{",
       "\t\ttitle: '操作',",
       "\t\tbuttons: [",
@@ -153,6 +150,75 @@
       "/>"
     ],
     "description": "LPInfo组件模板"
+  },
+  "LPContainer simple": {
+    "prefix": "lpcontainer-simple",
+    "body": [
+      "<LPContainer>",
+      "\t$2",
+      "</LPContainer>"
+    ],
+    "description": "LPContainer simple组件模板"
+  },
+  "LPContainer tabs": {
+    "prefix": "lpcontainer-tabs",
+    "body": [
+      "<LPContainer",
+      "\ttype={'tab'}",
+      "\tsource={[",
+      "\t\t{ title: '页面一', key: 'home', content: '页面一' },",
+      "\t\t{ title: '页面二', key: 'doc', content: '页面三' },", 
+      "\t\t{ title: '页面三', key: 'api', content: '页面三' },", 
+      "\t\t{ title: '页面四', key: 'repo', content: '页面四' },", 
+      "\t]}",
+      "\tonChange={() => { console.log('page'); }}",
+      "/>"
+    ],
+    "description": "LPContainer tabs组件模板"
+  },
+  "LPContainer nest": {
+    "prefix": "lpcontainer-nest",
+    "body": [
+      "<LPContainer",
+      "\ttype={'tab'}",
+      "\tsource={[",
+      "\t\t{",
+      "\t\t\ttitle: '页面一',",
+      "\t\t\tkey: 'home',",
+      "\t\t\tcontent: (",
+      "\t\t\t\t<LPPanel title={'子页面'}>",
+      "\t\t\t\t\t<LPContainer",
+      "\t\t\t\t\t\tnest",
+      "\t\t\t\t\t\ttype={'tab'}",
+      "\t\t\t\t\t\tsource={[",
+      "\t\t\t\t\t\t\t{ title: '子页面1', key: 'key1', content: '子页面1' },",
+      "\t\t\t\t\t\t\t{ title: '子页面2', key: 'key2', content: '子页面2' },",
+      "\t\t\t\t\t\t]}",
+      "\t\t\t\t\t\tnest",
+      "\t\t\t\t\t/>",
+      "\t\t\t\t</LPPanel>",
+      "\t\t}",
+      "\t\t{ title: '页面二', key: 'doc', content: '页面三' },", 
+      "\t\t{ title: '页面三', key: 'api', content: '页面三' },", 
+      "\t\t{ title: '页面四', key: 'repo', content: '页面四' },", 
+      "\t]}",
+      "\t onChange={() => { console.log('page'); }}",
+      "/>"
+    ],
+    "description": "LPContainer nest嵌套组件模板"
+  },
+  "LPPanel": {
+    "prefix": "lppanel",
+    "body": [
+      "<LPPanel",
+      "\ttitle={'标题'}",
+      "\tsubTitle={'副标题'}",
+      "\tbtnsZone={[{title: '次要按钮'}, {title: '主要按钮', type: 'primary'}]}",
+      ">",
+      "\t$1",
+      "</LPPanel>"
+    ],
+    "description": "LPPanel组件模板"
   },
   "LPGrid": {
     "prefix": "lpgrid",
@@ -313,8 +379,25 @@
       "}"
     ],
     "description": "捕获在子组件树中任何地方的 JavaScript 异常，并打印这些错误和展示备用UI"
+  },
+  "React class": {
+    "prefix": "class",
+    "body": [
+      "export default class extends React.Component {",
+      "\tconstructor(props) {",
+      "\t\tsuper(props)",
+      "\t\tthis.state={}",
+      "\t}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t$2", 
+      "\t\t)", 
+      "\t}",
+      "}"
+    ],
+    "description": "声明一个类"
   }
- 
 }
 
 
