@@ -80,12 +80,12 @@
       "\tdataSource={[",
       "\t\t{ id: '小明', phone: '123456', email: 'qwe@asd.com' },",
       "\t\t{ id: '小红', phone: '987654', email: 'zxc@mnb.com' },",     
-      "\t}",
+      "\t]}",
       "\tcolumns={[",
       "\t\t{ title: '姓名', dataIndex: 'id', tips: 'haha' },",
       "\t\t{ title: '手机号', dataIndex: 'phone', rows:1},",
       "\t\t{ title: 'email', dataIndex: 'email', cell: (value, index, record) => value},",      
-      "\t}",
+      "\t]}",
       "\tactions={{",
       "\t\ttitle: '操作',",
       "\t\tbuttons: [",
@@ -101,7 +101,7 @@
       "\t\tcurrent: 1,",
       "\t\tonChange: (pageNo) => {},",
       "\t\tonPageSizeChange: (pageSize) => {},",
-      "\t}",
+      "\t}}",
       "/>"
     ],
     "description": "LP表格组件常规用法"
